@@ -1,0 +1,34 @@
+{
+	"name": "DS_XLSX_01",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"path_directory": {
+				"type": "string"
+			},
+			"path_filename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().path_filename",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().path_directory",
+					"type": "Expression"
+				},
+				"fileSystem": "raw"
+			}
+		},
+		"schema": []
+	}
+}
