@@ -57,7 +57,7 @@
 						"referenceName": "DS_ADLS_PARQUET_PTUP",
 						"type": "DatasetReference",
 						"parameters": {
-							"path_filename": "fecha.parquet",
+							"path_filename": "PRECIO.parquet",
 							"path_directory": "raw_lab02"
 						}
 					}
