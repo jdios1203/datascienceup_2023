@@ -16,7 +16,7 @@
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
-			"sheetName": "Fechas",
+			"sheetName": "UNIDADES",
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": {
@@ -28,7 +28,8 @@
 					"type": "Expression"
 				},
 				"fileSystem": "raw"
-			}
+			},
+			"firstRowAsHeader": true
 		},
 		"schema": []
 	}
