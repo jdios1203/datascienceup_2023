@@ -55,7 +55,11 @@
 				"outputs": [
 					{
 						"referenceName": "DS_ADLS_PARQUET_FECHA",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"path_filename": "raw_lab02",
+							"path_directory": "fecha.parquet"
+						}
 					}
 				]
 			}
