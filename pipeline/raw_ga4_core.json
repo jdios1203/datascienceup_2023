@@ -1,11 +1,32 @@
 {
 	"name": "raw_ga4_core",
 	"properties": {
+		"activities": [
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "mensaje",
+					"value": "\"Inicio el juego\""
+				}
+			}
+		],
+		"variables": {
+			"mensaje": {
+				"type": "String"
+			}
+		},
 		"folder": {
 			"name": "01_raw_source"
 		},
 		"annotations": [],
-		"lastPublishTime": "2023-11-25T03:22:54Z"
+		"lastPublishTime": "2023-11-28T05:08:01Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }
