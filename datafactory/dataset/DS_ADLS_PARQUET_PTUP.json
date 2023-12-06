@@ -1,5 +1,5 @@
 {
-	"name": "DS_ADLS_PARQUET_FECHA",
+	"name": "DS_ADLS_PARQUET_PTUP",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
