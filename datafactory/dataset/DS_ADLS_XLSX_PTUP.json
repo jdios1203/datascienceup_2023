@@ -16,7 +16,6 @@
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
-			"sheetName": "UNIDADES",
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": {
