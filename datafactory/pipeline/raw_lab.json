@@ -1,0 +1,9 @@
+{
+	"name": "raw_lab",
+	"properties": {
+		"folder": {
+			"name": "01_raw_source"
+		},
+		"annotations": []
+	}
+}

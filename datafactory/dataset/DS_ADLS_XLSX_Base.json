@@ -1,5 +1,5 @@
 {
-	"name": "DS_XLSX_01",
+	"name": "DS_ADLS_XLSX_Base",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
@@ -16,7 +16,7 @@
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
-			"sheetName": "Base",
+			"sheetName": "Fechas",
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": {

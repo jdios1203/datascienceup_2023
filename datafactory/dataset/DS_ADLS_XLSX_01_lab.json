@@ -1,5 +1,5 @@
 {
-	"name": "DS_ADLS_XLSX_01",
+	"name": "DS_ADLS_XLSX_01_lab",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
