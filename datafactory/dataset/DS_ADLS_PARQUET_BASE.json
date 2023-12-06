@@ -1,5 +1,5 @@
 {
-	"name": "Parquet1",
+	"name": "DS_ADLS_PARQUET_BASE",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",

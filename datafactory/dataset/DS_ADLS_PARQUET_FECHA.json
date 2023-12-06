@@ -1,0 +1,108 @@
+{
+	"name": "DS_ADLS_PARQUET_FECHA",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "raw"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "UPC",
+				"type": "UTF8"
+			},
+			{
+				"name": "SKU",
+				"type": "UTF8"
+			},
+			{
+				"name": "DESCRIPCION_LARGA",
+				"type": "UTF8"
+			},
+			{
+				"name": "SUBCLASE-CONJUNTO",
+				"type": "UTF8"
+			},
+			{
+				"name": "DESC_SUBCLASE-DESC_CONJUNTO",
+				"type": "UTF8"
+			},
+			{
+				"name": "MARCA",
+				"type": "UTF8"
+			},
+			{
+				"name": "MODELO",
+				"type": "UTF8"
+			},
+			{
+				"name": "NRO_LOCAL",
+				"type": "UTF8"
+			},
+			{
+				"name": "LOCAL",
+				"type": "UTF8"
+			},
+			{
+				"name": "1",
+				"type": "UTF8"
+			},
+			{
+				"name": "2",
+				"type": "UTF8"
+			},
+			{
+				"name": "3",
+				"type": "UTF8"
+			},
+			{
+				"name": "4",
+				"type": "UTF8"
+			},
+			{
+				"name": "5",
+				"type": "UTF8"
+			},
+			{
+				"name": "6",
+				"type": "UTF8"
+			},
+			{
+				"name": "7",
+				"type": "UTF8"
+			},
+			{
+				"name": "VENTA_UNIDADES",
+				"type": "UTF8"
+			},
+			{
+				"name": "VENTA_SOLES",
+				"type": "UTF8"
+			},
+			{
+				"name": "STOCK_CONTABLE",
+				"type": "UTF8"
+			},
+			{
+				"name": "OC_PENDIENTE",
+				"type": "UTF8"
+			},
+			{
+				"name": "TRF_POR_RECIBIR",
+				"type": "UTF8"
+			},
+			{
+				"name": "TRF_ENVIADAS",
+				"type": "UTF8"
+			}
+		]
+	}
+}
