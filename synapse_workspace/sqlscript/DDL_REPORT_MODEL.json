@@ -1,0 +1,17 @@
+{
+	"name": "DDL_REPORT_MODEL",
+	"properties": {
+		"content": {
+			"query": "USE updatawarehouse\nGO\n\nCREATE SCHEMA business AUTHORIZATION dbo;\nGO\n\n--Transacional con particion\nCREATE EXTERNAL TABLE business.base02(\n    UPC VARCHAR(8000),\n    SKU VARCHAR(8000)\n) WITH (\n    LOCATION = '/raw/raw_lab02/base.parquet',\n    DATA_SOURCE = ExternalUPDataSource,\n    FILE_FORMAT = UPParquetFileFormat\n);\nGO\n\n-- STOCK\nCREATE EXTERNAL TABLE business.stock(\n    COD_REF VARCHAR(8000),\n    STOCK_CONTABLE VARCHAR(8000),\n    PREC_UNITARIO VARCHAR(8000),\n    PU_CONTABLE VARCHAR(8000)\n) WITH (\n    LOCATION = '/raw/raw_lab02/stock.parquet',\n    DATA_SOURCE = ExternalUPDataSource,\n    FILE_FORMAT = UPParquetFileFormat\n);\nGO\n\n-- UNIDADES\nCREATE EXTERNAL TABLE business.unidades(\n    COD_REF VARCHAR(8000),\n    UPC VARCHAR(8000),\n    SKU VARCHAR(8000),\n    DESCRIPCION_LARGA VARCHAR(8000),\n    SUBCLASE-CONJUNTO VARCHAR(8000),\n    DESC_SUBCLASE-DESC_CONJUNTO VARCHAR(8000),\n    MARCA VARCHAR(8000),\n    MODELO VARCHAR(8000),\n    NRO_LOCAL VARCHAR(8000),\n    LOCAL VARCHAR(8000),\n    Unidades VARCHAR(8000),\n    Fecha DATE\n) WITH (\n    LOCATION = '/raw/raw_lab02/unidades.parquet',\n    DATA_SOURCE = ExternalUPDataSource,\n    FILE_FORMAT = UPParquetFileFormat\n);\nGO\n\n-- PRECIO\nCREATE EXTERNAL TABLE business.precio(\n    COD_REF VARCHAR(8000),\n    PREC_UNITARIO VARCHAR(8000)\n) WITH (\n    LOCATION = '/raw/raw_lab02/precio.parquet',\n    DATA_SOURCE = ExternalUPDataSource,\n    FILE_FORMAT = UPParquetFileFormat\n);\nGO\n\n\nCREATE EXTERNAL TABLE business.base02(\n    COD_REF VARCHAR(8000),\n    UPC VARCHAR(8000),\n    SKU VARCHAR(8000),\n    DESCRIPCION_LARGA ,\n    SUBCLASE-CONJUNTO ,\n    DESC_SUBCLASE-DESC_CONJUNTO ,\n    \n) WITH (\n    LOCATION = '/raw/raw_lab02/base.parquet',\n    DATA_SOURCE = ExternalUPDataSource,\n    FILE_FORMAT = UPParquetFileFormat\n);\nGO\n\n\n\n\nSELECT * FROM business.precio",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "updatawarehouse",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
