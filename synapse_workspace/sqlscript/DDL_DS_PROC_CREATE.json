@@ -2,12 +2,12 @@
 	"name": "DDL_DS_PROC_CREATE",
 	"properties": {
 		"content": {
-			"query": "",
+			"query": "CREATE DATABASE updatawarehouse;\nGO\n\nUSE updatawarehouse;\nGO\n\n--Paso 01\nCREATE MASTER KEY ENCRYPTION BY PASSWORD = 'p39345ghJ#KL95909234nl0zBe'\nGO",
 			"metadata": {
 				"language": "sql"
 			},
 			"currentConnection": {
-				"databaseName": "master",
+				"databaseName": "updatawarehouse",
 				"poolName": "Built-in"
 			},
 			"resultLimit": 5000
