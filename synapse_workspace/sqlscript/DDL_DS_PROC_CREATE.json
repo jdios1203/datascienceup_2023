@@ -2,7 +2,7 @@
 	"name": "DDL_DS_PROC_CREATE",
 	"properties": {
 		"content": {
-			"query": "CREATE DATABASE updatawarehouse;\nGO\n\nUSE updatawarehouse;\nGO\n\n--Paso 01\nCREATE MASTER KEY ENCRYPTION BY PASSWORD = 'p39345ghJ#KL95909234nl0zBe'\nGO",
+			"query": "CREATE DATABASE updatawarehouse;\nGO\n\nUSE updatawarehouse;\nGO\n\n--Paso 01\nCREATE MASTER KEY ENCRYPTION BY PASSWORD = 'p39345ghJ#KL95909234nl0zBe'\nGO\n\n--Paso 02\nCREATE DATABASE SCOPED CREDENTIAL UPJordandios WITH IDENTITY = 'SHARED ACCESS SIGNATURE',\nSECRET = '?sv=2022-11-02&ss=bfqt&srt=sco&sp=rwdlacupyx&se=2023-12-31T08:44:11Z&st=2023-12-07T00:44:11Z&spr=https&sig=kXE21Qp4IvMRIXaUSLA1CVGVLW3ZKzLTA%2BG%2Fcv0r284%3D'\nGO\n\n-- Paso 03\nCREATE EXTERNAL DATA SOURCE ExternalUPDataSource\nWITH (\n    LOCATION = 'https://dlsupdsjjdmdevm1z.dfs.core.windows.net/',\n    CREDENTIAL = UPJordandios\n);\nGO\n\n-- Paso 04\nCREATE EXTERNAL FILE FORMAT UPParquetFileFormat \nWITH (\n    FORMAT_TYPE = PARQUET,\n    DATA_COMPRESSION = 'org.apache.hadoop.io.compress.SnappyCodec'\n);\nGO\n\nCREATE EXTERNAL FILE FORMAT UPCSVWithHEADERFORMAT\nWITH (\n    FORMAT_TYPE = DELIMITEDTEXT,\n    FORMAT_OPTIONS (\n        PARSER_VERSION='2.0',\n        FIELD_TERMINATOR = '|',\n        STRING_DELIMITER = '\"',\n        FIRST_ROW = 2)\n)\n\n\n\n",
 			"metadata": {
 				"language": "sql"
 			},
