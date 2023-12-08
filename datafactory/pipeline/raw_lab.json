@@ -3,79 +3,6 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
-				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "ExcelSource",
-						"storeSettings": {
-							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						}
-					},
-					"sink": {
-						"type": "ParquetSink",
-						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
-						},
-						"formatSettings": {
-							"type": "ParquetWriteSettings"
-						}
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "DS_ADLS_XLSX_PTUP",
-						"type": "DatasetReference",
-						"parameters": {
-							"path_directory": "raw_lab02",
-							"path_filename": {
-								"value": "@variables('lista_docs')",
-								"type": "Expression"
-							},
-							"sheet_names": {
-								"value": "@variables('lista_objetos')",
-								"type": "Expression"
-							}
-						}
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "DS_ADLS_PARQUET_PTUP",
-						"type": "DatasetReference",
-						"parameters": {
-							"path_filename": {
-								"value": "@concat(variables('lista_objetos'),'.PARQUET')",
-								"type": "Expression"
-							},
-							"path_directory": "master_lab02"
-						}
-					}
-				]
-			},
-			{
 				"name": "Listar hojas",
 				"description": "",
 				"type": "SetVariable",
@@ -88,9 +15,9 @@
 				"typeProperties": {
 					"variableName": "lista_hojas",
 					"value": [
-						"PRECIO",
-						"STOCK",
-						"UNIDADES"
+						"precio",
+						"stock",
+						"unidades"
 					]
 				}
 			},
@@ -98,12 +25,6 @@
 				"name": "ForEach1",
 				"type": "ForEach",
 				"dependsOn": [
-					{
-						"activity": "Listar docs",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
 					{
 						"activity": "Listar hojas",
 						"dependencyConditions": [
@@ -114,10 +35,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@variables('lista_objetos')",
+						"value": "@variables('lista_hojas')",
 						"type": "Expression"
 					},
-					"isSequential": true,
+					"isSequential": false,
 					"activities": [
 						{
 							"name": "Copy data2",
@@ -165,12 +86,9 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"path_directory": "raw_lab02",
-										"path_filename": {
-											"value": "@variables('lista_docs')",
-											"type": "Expression"
-										},
+										"path_filename": "Plantilla trabajo UP (1).xlsx",
 										"sheet_names": {
-											"value": "@variables('lista_objetos')",
+											"value": "@item()",
 											"type": "Expression"
 										}
 									}
@@ -182,30 +100,14 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"path_filename": {
-											"value": "@concat(variables('lista_docs'),'.PARQUET')",
+											"value": "@concat(item(),'.PARQUET')\n",
 											"type": "Expression"
 										},
-										"path_directory": "master_lab02"
+										"path_directory": "master_lab02/PTUP"
 									}
 								}
 							]
 						}
-					]
-				}
-			},
-			{
-				"name": "Listar docs",
-				"type": "SetVariable",
-				"dependsOn": [],
-				"policy": {
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "lista_docs",
-					"value": [
-						"Plantilla trabajo UP (1).xlsx"
 					]
 				}
 			}

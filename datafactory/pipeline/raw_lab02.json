@@ -24,7 +24,7 @@
 						}
 					},
 					"dataset": {
-						"referenceName": "DS_ADLS_XLSX_PTUP",
+						"referenceName": "DS_ADLS_XLSX_PTUP_2",
 						"type": "DatasetReference"
 					}
 				}
