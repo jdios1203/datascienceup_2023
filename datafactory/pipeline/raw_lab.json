@@ -6,8 +6,6 @@
 				"name": "Listar hojas PTUP",
 				"description": "",
 				"type": "SetVariable",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"secureOutput": false,
@@ -26,8 +24,6 @@
 			{
 				"name": "ForEach_PTUP",
 				"type": "ForEach",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Listar hojas PTUP",
@@ -119,8 +115,6 @@
 				"name": "Listar Hojas BD Maestro Retails",
 				"description": "",
 				"type": "SetVariable",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"secureOutput": false,
@@ -138,8 +132,6 @@
 			{
 				"name": "ForEach_BD_Maestro_Retails",
 				"type": "ForEach",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Listar Hojas BD Maestro Retails",
@@ -227,10 +219,8 @@
 				}
 			},
 			{
-				"name": "Copy data4",
+				"name": "Copy data_CATEGORIZACION",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -291,7 +281,7 @@
 				]
 			},
 			{
-				"name": "Copy data5",
+				"name": "Copy data_HISTORICO",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
