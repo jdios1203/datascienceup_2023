@@ -2,7 +2,7 @@
 	"name": "DDL_PROCESAMIENTO",
 	"properties": {
 		"content": {
-			"query": "SELECT \n    YEAR(Fecha) AS 'Año',\n    UPPER(D.RETAIL) AS 'RETAIL',\n    RTRIM(SKU) AS 'COD_CADENA',\n    NRO_LOCAL AS 'COD_LOCAL',\n    UPPER(DATENAME(month, Fecha)) AS 'MES',\n    DATEPART(week, Fecha) AS 'SEM',\n    TRY_CAST(Unidades AS DECIMAL) * TRY_CAST(B.[PREC_UNITARIO] AS DECIMAL) AS 'VTA_PERIODO_NETA(S/)',\n    Unidades AS 'VTA_PERIODO(U)',\n    TRY_CAST(C.STOCK_CONTABLE AS DECIMAL) * TRY_CAST(C.[PU_CONTABLE] AS DECIMAL) AS 'INVENTARIO(S/)',\n    C.STOCK_CONTABLE AS 'INVENTARIO(U)',\n    Fecha\nFROM \n    business.unidades01 A \nINNER JOIN \n    business.precio B ON A.[COD_REF] = B.[COD_REF] \nINNER JOIN \n    business.stock C ON A.[COD_REF] = C.[COD_REF]\nINNER JOIN \n    business.TiendasRetail D ON A.NRO_LOCAL = D.COD_LOCAL",
+			"query": "CREATE VIEW business.consolidado AS\nSELECT * FROM business.HistorioSO\nUNION ALL\n\nSELECT\n    YEAR(Fecha) AS 'Año',\n    UPPER(D.RETAIL) AS 'RETAIL',\n    RTRIM(SKU) AS 'COD_CADENA',\n    NRO_LOCAL AS 'COD_LOCAL',\n    UPPER(DATENAME(month, Fecha)) AS 'MES',\n    DATEPART(week, Fecha) AS 'SEM',\n    TRY_CAST(Unidades AS DECIMAL) * TRY_CAST(B.[PREC_UNITARIO] AS DECIMAL) AS 'VTA_PERIODO_NETA(S/)',\n    Unidades AS 'VTA_PERIODO(U)',\n    TRY_CAST(C.STOCK_CONTABLE AS DECIMAL) * TRY_CAST(C.[PU_CONTABLE] AS DECIMAL) AS 'INVENTARIO(S/)',\n    C.STOCK_CONTABLE AS 'INVENTARIO(U)',\n    Fecha\nFROM \n    business.unidades01 A \nINNER JOIN \n    business.precio B ON A.[COD_REF] = B.[COD_REF] \nINNER JOIN \n    business.stock C ON A.[COD_REF] = C.[COD_REF]\nINNER JOIN \n    business.TiendasRetail D ON A.NRO_LOCAL = D.COD_LOCAL\n\n\nSELECT * FROM business.consolidado\n",
 			"metadata": {
 				"language": "sql"
 			},
