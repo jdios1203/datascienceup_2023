@@ -48,7 +48,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"path_directory": "raw_lab02",
-							"path_filename": "BD Maestro Categorización.xlsx"
+							"path_filename": "Historico SO.xlsx"
 						}
 					}
 				],
@@ -57,7 +57,7 @@
 						"referenceName": "DS_ADLS_PARQUET_PTUP",
 						"type": "DatasetReference",
 						"parameters": {
-							"path_filename": "MaestroMateriales.parquet",
+							"path_filename": "HistoricoSO.parquet",
 							"path_directory": "raw_lab02"
 						}
 					}

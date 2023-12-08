@@ -16,7 +16,7 @@
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
-			"sheetName": "Maestro Materiales",
+			"sheetName": "2019",
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": {
