@@ -44,12 +44,8 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_ADLS_XLSX_PTUP",
-						"type": "DatasetReference",
-						"parameters": {
-							"path_directory": "raw_lab02",
-							"path_filename": "Historico SO.xlsx"
-						}
+						"referenceName": "DS_ADLS_XLSX_PRECIO",
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [

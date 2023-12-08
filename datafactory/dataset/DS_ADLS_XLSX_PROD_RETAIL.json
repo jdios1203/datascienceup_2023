@@ -1,20 +1,12 @@
 {
-	"name": "DS_ADLS_XLSX_PTUP",
+	"name": "DS_ADLS_XLSX_PROD_RETAIL",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"path_directory": {
-				"type": "string"
-			},
-			"path_filename": {
-				"type": "string"
-			}
-		},
 		"folder": {
-			"name": "lab02"
+			"name": "lab02/BD Maestro Retails"
 		},
 		"annotations": [],
 		"type": "Excel",
@@ -22,14 +14,8 @@
 			"sheetName": "Productos Retails",
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": {
-					"value": "@dataset().path_filename",
-					"type": "Expression"
-				},
-				"folderPath": {
-					"value": "@dataset().path_directory",
-					"type": "Expression"
-				},
+				"fileName": "BD Maestro Retails.xlsx",
+				"folderPath": "raw_lab02",
 				"fileSystem": "raw"
 			},
 			"firstRowAsHeader": true

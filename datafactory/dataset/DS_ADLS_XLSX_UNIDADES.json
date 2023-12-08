@@ -1,0 +1,25 @@
+{
+	"name": "DS_ADLS_XLSX_UNIDADES",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "lab02/Plantilla Trabajo UP"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "UNIDADES",
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Plantilla trabajo UP (1).xlsx",
+				"folderPath": "raw_lab02",
+				"fileSystem": "raw"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": []
+	}
+}
