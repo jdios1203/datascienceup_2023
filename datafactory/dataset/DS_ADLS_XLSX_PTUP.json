@@ -22,10 +22,7 @@
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
-			"sheetName": {
-				"value": "@dataset().sheet_names",
-				"type": "Expression"
-			},
+			"sheetName": "2019",
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": {

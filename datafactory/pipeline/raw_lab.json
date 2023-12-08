@@ -3,9 +3,11 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Listar hojas",
+				"name": "Listar hojas PTUP",
 				"description": "",
 				"type": "SetVariable",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"secureOutput": false,
@@ -22,11 +24,13 @@
 				}
 			},
 			{
-				"name": "ForEach1",
+				"name": "ForEach_PTUP",
 				"type": "ForEach",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
-						"activity": "Listar hojas",
+						"activity": "Listar hojas PTUP",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -110,6 +114,243 @@
 						}
 					]
 				}
+			},
+			{
+				"name": "Listar Hojas BD Maestro Retails",
+				"description": "",
+				"type": "SetVariable",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "lista_hojas_bd_retail",
+					"value": [
+						"Productos Retails",
+						"Tiendas Retails"
+					]
+				}
+			},
+			{
+				"name": "ForEach_BD_Maestro_Retails",
+				"type": "ForEach",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [
+					{
+						"activity": "Listar Hojas BD Maestro Retails",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@variables('lista_hojas_bd_retail')",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Copy data3",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "ExcelSource",
+									"storeSettings": {
+										"type": "AzureBlobFSReadSettings",
+										"recursive": true,
+										"enablePartitionDiscovery": false
+									}
+								},
+								"sink": {
+									"type": "ParquetSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "ParquetWriteSettings"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "DS_ADLS_XLSX_PTUP",
+									"type": "DatasetReference",
+									"parameters": {
+										"path_directory": "raw_lab02",
+										"path_filename": "BD Maestro Retails.xlsx",
+										"sheet_names": {
+											"value": "@item()",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DS_ADLS_PARQUET_PTUP",
+									"type": "DatasetReference",
+									"parameters": {
+										"path_filename": {
+											"value": "@concat(item(),'.PARQUET')",
+											"type": "Expression"
+										},
+										"path_directory": "master_lab02/BD_MAESTRO_RETAIL"
+									}
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"name": "Copy data4",
+				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "ExcelSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						}
+					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ADLS_XLSX_PTUP",
+						"type": "DatasetReference",
+						"parameters": {
+							"path_directory": "raw_lab02",
+							"path_filename": "BD Maestro Categorización.xlsx",
+							"sheet_names": "Maestro Materiales"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ADLS_PARQUET_PTUP",
+						"type": "DatasetReference",
+						"parameters": {
+							"path_filename": "Maestro Materiales.PARQUET",
+							"path_directory": "master_lab02/BD_MAESTRO_CATEGORIZACION"
+						}
+					}
+				]
+			},
+			{
+				"name": "Copy data5",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "ExcelSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						}
+					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ADLS_XLSX_PTUP",
+						"type": "DatasetReference",
+						"parameters": {
+							"path_directory": "raw_lab02",
+							"path_filename": "Historico SO.xlsx",
+							"sheet_names": "2019"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ADLS_PARQUET_PTUP",
+						"type": "DatasetReference",
+						"parameters": {
+							"path_filename": "HistoricoSO.parquet",
+							"path_directory": "master_lab02/HISTORICO"
+						}
+					}
+				]
 			}
 		],
 		"concurrency": 1,
@@ -118,6 +359,9 @@
 				"type": "Array"
 			},
 			"lista_docs": {
+				"type": "Array"
+			},
+			"lista_hojas_bd_retail": {
 				"type": "Array"
 			}
 		},
