@@ -11,6 +11,9 @@
 			},
 			"path_filename": {
 				"type": "string"
+			},
+			"sheet_names": {
+				"type": "string"
 			}
 		},
 		"folder": {
@@ -19,7 +22,10 @@
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
-			"sheetName": "Productos Retails",
+			"sheetName": {
+				"value": "@dataset().sheet_names",
+				"type": "Expression"
+			},
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": {

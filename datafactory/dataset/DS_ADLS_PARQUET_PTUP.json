@@ -29,7 +29,7 @@
 					"value": "@dataset().path_directory",
 					"type": "Expression"
 				},
-				"fileSystem": "raw"
+				"fileSystem": "master"
 			},
 			"compressionCodec": "snappy"
 		},
